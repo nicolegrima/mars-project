@@ -5,23 +5,22 @@
   outline: none;
 }
 
+/*flex parent of aside and section*/
+
 body {
-    // font-size:16px;
+    /*// font-size:16px;
     // color: #ffffff;
     // font-family:'Open Sans';
     // font-weight: normal;
     // font-style: normal;
-    // line-height: 2;
-
+    // line-height: 2;*/
     width: 100%;
     width: 100vw;
     height: 100%;
-    height: 100vh; // do I need both of these? //
-
+    height: 100vh;
     display: flex;
     margin: 0;
     padding: 0;
-    background-color: blue;
 
 }
 
@@ -34,18 +33,81 @@ The medium grey color of the text in the footer is #c2c2c2
 
 */
 
+/* flex child of body */
 aside {
     display: flex;
     flex: 0 1 20%;
     position:relative;
     align-items: center;
     justify-content: center;
+    background-color: #ffffff;
+
+}
+aside h1 {
+    position: absolute;
+    transform: translateX(-80px)rotate(270deg);
+    font-size: 5.5rem;
+    text-transform: uppercase;
+    color: #EDF1F2;
+    /*padding-right: 2rem;
+    padding-bottom: 2rem;*/
 
 }
 
+.rocket {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    width: 100px;
+    height: 100px;
+    background-color: #fd746c;
+    border-radius: 50%;
+
+}
+
+.fa-space-shuttle {
+   position: relative;
+   transform: rotate(-90deg);
+   font-size: 4rem;
+
+
+}
+
+/* flex child of body */
 section {
     display: flex;
     flex: 0 1 80%;
+    position: relative;
+    align-items: center;
+    justify-content: center;
     background-color: #fd746c;
     // need to add gradient for color #ff9068
+}
+
+
+button {
+   background-color: #EDF1F2;
+   border: 2px solid white;
+   font-size: 1.2rem;
+   font-weight: bold;
+   text-transform: uppercase;
+   letter-spacing: -0.04rem;
+   border-radius: 3px;
+   padding: 1rem 4rem;
+   box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+
+}
+
+.clock {
+  display: flex;
+  position: relative;
+  border: 2px solid #ff9068;
+  border-radius: 5px;
+  font-size: 2rem;
+  width: 200px;
+  height: 75px;
+  color: lightgreen;
+  background-color: black;
 }

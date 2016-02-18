@@ -10,7 +10,7 @@ render: function(){
     <div>
       <button>Take Test</button>
     </div>
-  );
+  )
 }
 });
 

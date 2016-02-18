@@ -26,14 +26,6 @@ gulp.task('sass', function() {
 
 gulp.task('compile-react', function() {
     return gulp.src('./**/*.jsx')
-        .pipe(jscs())
-        .pipe(jscs.reporter())
-        .pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
-        .pipe(rename('main.min.js'))
-        .pipe(browserify({
-          insertGlobals: true,
-          debug: true
-        }))
         .pipe(webpack({
             entry: {
               main: './main.jsx'
@@ -52,7 +44,7 @@ gulp.task('compile-react', function() {
                         }]
             }
         }))
-        .pipe(gulp.dest('./build/js/'));
+        .pipe(gulp.dest('./build'));
 });
 
 gulp.task('browser-sync', function(){
@@ -64,7 +56,7 @@ gulp.task('browser-sync', function(){
 });
 
 gulp.watch('main.jsx', ['compile-react']);
-gulp.watch(['./build/script.js', 'index.html', './build/css/*.min.css']).on('change', browserSync.reload);
+gulp.watch(['./build/main.js', 'index.html', './build/css/*.min.css']).on('change', browserSync.reload);
 gulp.watch('./sass/style.scss', ['sass']);
 });
 

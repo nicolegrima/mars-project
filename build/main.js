@@ -82,7 +82,7 @@
 	                React.createElement(
 	                    'div',
 	                    { className: 'clock' },
-	                    'Clock Timer'
+	                    '00:00'
 	                )
 	            )
 	        );

@@ -15,7 +15,7 @@ var App = React.createClass ({
                 <div className='section-style'>
                     <button className='test-button'>Take Test</button>
 
-                    <div className='clock'>Clock Timer</div>
+                    <div className='clock'>00:00</div>
                 </div>
           </div>
   )

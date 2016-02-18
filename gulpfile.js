@@ -1,10 +1,13 @@
-var gulp = require('gulp');
-var browserSync = require('browser-sync').create();
-var plumber = require('gulp-plumber');
-var notify = require('gulp-notify');
-var rename = require("gulp-rename");
-var jscs = require('gulp-jscs');
-var babel = require('gulp-babel');
+var gulp = require('gulp'),
+    browserSync = require('browser-sync').create();
+
+var babel = require('gulp-babel'),
+    webpack = require('webpack-stream'),
+    plumber = require('gulp-plumber');
+
+var notify = require('gulp-notify'),
+    rename = require("gulp-rename"),
+    jscs = require('gulp-jscs');
 
 var sass = require('gulp-sass'),
     autoprefixer = require('gulp-autoprefixer'),
@@ -20,17 +23,36 @@ gulp.task('sass', function() {
       .pipe(gulp.dest('./build'));
 });
 
-gulp.task('compile-react', function(){
-    return gulp.src('main.jsx')
-        .pipe(jscs()) // run jscs
+
+gulp.task('compile-react', function() {
+    return gulp.src('./**/*.jsx')
+        .pipe(jscs())
         .pipe(jscs.reporter())
         .pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
         .pipe(rename('main.min.js'))
-				.pipe(browserify({
-					insertGlobals: true,
-					debug: true
-				}))
-				.pipe(gulp.dest('./build'));
+        .pipe(browserify({
+          insertGlobals: true,
+          debug: true
+        }))
+        .pipe(webpack({
+            entry: {
+              main: './main.jsx'
+            },
+            output: {
+              publicPath: '',
+              filename: 'main.js'
+            },
+            module: {
+              loaders: [{ test: /\.jsx?$/,
+                          exclude: /(node_modules)/,
+                          loader: 'babel-loader',
+                          query: {
+                            presets: ['es2015', 'react']
+                          }
+                        }]
+            }
+        }))
+        .pipe(gulp.dest('./build/js/'));
 });
 
 gulp.task('browser-sync', function(){

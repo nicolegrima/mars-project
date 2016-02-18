@@ -1,5 +1,5 @@
 var gulp = require('gulp'),
-    browserSync = require('browser-sync').create();
+    browserSync = require('browser-sync');
 
 var babel = require('gulp-babel'),
     webpack = require('webpack-stream'),
@@ -13,39 +13,42 @@ var sass = require('gulp-sass'),
     autoprefixer = require('gulp-autoprefixer'),
     minifyCSS = require('gulp-cssnano');
 
+
+    gulp.task('compile-react', function() {
+        return gulp.src('main.jsx')
+            .pipe(webpack({
+                entry: {
+                  main: './main.jsx'
+                },
+                output: {
+                  publicPath: '',
+                  filename: 'main.js'
+                },
+                module: {
+                  loaders: [{ test: /\.jsx?$/,
+                              exclude: /(node_modules)/,
+                              loader: 'babel-loader',
+                              query: {
+                                presets: ['es2015', 'react']
+                              }
+                            }]
+                }
+            }))
+            .pipe(gulp.dest('./build'));
+    });
+
+
 gulp.task('sass', function() {
    gulp.src('./sass/style.scss')
       .pipe(sass())
       .pipe(autoprefixer({
          browsers: ['last 2 versions']}))
+      .pipe(gulp.dest('./build'))
       .pipe(minifyCSS())
       .pipe(rename('style.min.css'))
       .pipe(gulp.dest('./build'));
 });
 
-
-gulp.task('compile-react', function() {
-    return gulp.src('./**/*.jsx')
-        .pipe(webpack({
-            entry: {
-              main: './main.jsx'
-            },
-            output: {
-              publicPath: '',
-              filename: 'main.js'
-            },
-            module: {
-              loaders: [{ test: /\.jsx?$/,
-                          exclude: /(node_modules)/,
-                          loader: 'babel-loader',
-                          query: {
-                            presets: ['es2015', 'react']
-                          }
-                        }]
-            }
-        }))
-        .pipe(gulp.dest('./build'));
-});
 
 gulp.task('browser-sync', function(){
 
@@ -56,7 +59,7 @@ gulp.task('browser-sync', function(){
 });
 
 gulp.watch('main.jsx', ['compile-react']);
-gulp.watch(['./build/main.js', 'index.html', './build/css/*.min.css']).on('change', browserSync.reload);
+gulp.watch(['./build/main.js', 'index.html', './build/style.min.css']).on('change', browserSync.reload);
 gulp.watch('./sass/style.scss', ['sass']);
 });
 

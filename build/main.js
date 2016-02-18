@@ -50,25 +50,42 @@
 	var ReactDOM = __webpack_require__(158);
 
 	var App = React.createClass({
-	  displayName: 'App',
+	    displayName: 'App',
 
 
-	  render: function render() {
-	    return React.createElement(
-	      'div',
-	      null,
-	      React.createElement(
-	        'button',
-	        null,
-	        'Take Test'
-	      )
-	    );
-	  }
+	    render: function render() {
+	        return React.createElement(
+	            'div',
+	            { className: 'wrapper' },
+	            React.createElement(
+	                'div',
+	                { className: 'aside-style' },
+	                React.createElement(
+	                    'h1',
+	                    null,
+	                    'Mars'
+	                ),
+	                React.createElement(
+	                    'div',
+	                    { className: 'rocket' },
+	                    React.createElement('i', { className: 'fa fa-space-shuttle' })
+	                )
+	            ),
+	            React.createElement(
+	                'div',
+	                { className: 'section-style' },
+	                React.createElement(
+	                    'button',
+	                    null,
+	                    'Take Test'
+	                )
+	            )
+	        );
+	    }
+
 	});
 
 	ReactDOM.render(React.createElement(App, null), document.querySelector('.mount-node'));
-
-	/*<div class="clock">The Clock goes here</div>*/
 
 /***/ },
 /* 1 */

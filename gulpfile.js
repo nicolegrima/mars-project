@@ -5,6 +5,9 @@ var babel = require('gulp-babel');
 var browserify = require('gulp-browserify');
 var browserSync = require('browser-sync');
 var plumber = require('gulp-plumber');
+var sass = require('gulp-sass');
+var autoprefixer = require('gulp-autoprefixer');
+var minifyCSS = require('gulp-cssnano');
 
 gulp.task('compile-react', function() {
 	return gulp.src('main.jsx')
@@ -17,6 +20,16 @@ gulp.task('compile-react', function() {
 			debug: true
 		}))
 		.pipe(gulp.dest('./'));
+});
+
+gulp.task('sass', function() {
+   gulp.src('./sass/style.scss')
+      .pipe(sass())
+      .pipe(autoprefixer({
+         browsers: ['last 2 versions']}))
+      .pipe(minifyCSS())
+      .pipe(rename('style.min.css'))
+      .pipe(gulp.dest('./build'));
 });
 
 gulp.task('browser-sync', ['compile-react'], function() {

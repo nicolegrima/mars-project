@@ -76,8 +76,13 @@
 	                { className: 'section-style' },
 	                React.createElement(
 	                    'button',
-	                    null,
+	                    { className: 'test-button' },
 	                    'Take Test'
+	                ),
+	                React.createElement(
+	                    'div',
+	                    { className: 'clock' },
+	                    'Clock Timer'
 	                )
 	            )
 	        );

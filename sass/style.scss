@@ -4,7 +4,7 @@
 // @import 'fonts';
 // add in fonts when I create the folder for it.
 
-/* Universal and General Styles */
+/* UNIVERSAL AND GENERAL STYLE */
 
 * {
   box-sizing: border-box;
@@ -13,11 +13,10 @@
 
 /*flex parent of aside and section*/
 body {
-    /*// font-size:16px;
-    // color: #ffffff;
+    font-size:16px;
     // font-family:'Open Sans';
-    // font-weight: normal;
-    // font-style: normal;
+    font-weight: normal;
+    font-style: normal;
     // line-height: 2;*/
     width: 100%;
     width: 100vw;
@@ -26,17 +25,7 @@ body {
     display: flex;
     margin: 0;
     padding: 0;
-
 }
-
-/*
-The base font size is 16px and it HEX code is #ffffff
-The body font family is Open Sans Light
-The HEX code for the button colour is #e2231a
-The light grey border color is #dbdbdb
-The medium grey color of the text in the footer is #c2c2c2
-
-*/
 
 /* flex child of body */
 aside {
@@ -66,7 +55,7 @@ aside h1 {
     color: #ffffff;
     width: 100px;
     height: 100px;
-    background-color: #fd746c;
+    background: linear-gradient(to top, #fd746c, #ff9068);
     border-radius: 50%;
 
 }
@@ -75,8 +64,6 @@ aside h1 {
    position: relative;
    transform: rotate(-90deg);
    font-size: 4rem;
-
-
 }
 
 /* flex child of body */
@@ -86,8 +73,7 @@ section {
     position: relative;
     align-items: center;
     justify-content: center;
-    background-color: #fd746c;
-    // need to add gradient for color #ff9068
+    background: linear-gradient(to bottom, #fd746c, #ff9068);
 }
 
 

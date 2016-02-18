@@ -1,3 +1,9 @@
+/* IMPORT */
+
+@import 'reset';
+// @import 'fonts';
+// add in fonts when I create the folder for it.
+
 /* Universal and General Styles */
 
 * {
@@ -6,7 +12,6 @@
 }
 
 /*flex parent of aside and section*/
-
 body {
     /*// font-size:16px;
     // color: #ffffff;
@@ -41,7 +46,6 @@ aside {
     align-items: center;
     justify-content: center;
     background-color: #ffffff;
-
 }
 aside h1 {
     position: absolute;
@@ -97,7 +101,6 @@ button {
    border-radius: 3px;
    padding: 1rem 4rem;
    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
-
 }
 
 .clock {

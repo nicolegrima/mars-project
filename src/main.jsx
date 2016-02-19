@@ -7,7 +7,6 @@ import {Router, Route, browserHistory, Redirect} from 'react-router';
 
 import Welcome from './components/welcome-screen.jsx';
 import MarsTest from './components/evaluation-screen.jsx'
-import Questions from './components/questions-list.jsx';
 import CountdownTimer from './components/countdown-timer.jsx';
 import Accepted from './components/accepted-screen';
 import Rejected from './components/rejetcted-screen';
@@ -24,7 +23,6 @@ var App = React.createClass ({
                 <Route path='/countdown-timer' component={CountdownTimer} />
                 <Route path='/accepted-screen' component={Accepted} />
                 <Route path='/rejected-screen' component={Rejected} />
-                <Route path='/questions-list' component={Questions} />
                 <Route path= '*' component={NotFound} />
             </Router>
         )

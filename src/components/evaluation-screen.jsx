@@ -1,5 +1,7 @@
 var React = require('react');
 
+import Questions from './components/questions-list.jsx';
+
 var MarsTest = React.createClass ({
 
     render: function(){

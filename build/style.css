@@ -95,7 +95,7 @@ table {
   font-weight: normal;
   font-style: normal; }
 
-/* .mount-node is flex parent of aside-style and section-style*/
+/* .wrapper is flex parent of aside-style and section-style*/
 /* flex child */
 .aside-style {
   display: -webkit-flex;
@@ -185,10 +185,13 @@ table {
   display: -ms-flexbox;
   display: flex;
   position: relative;
+  -webkit-align-self: flex-start;
+      -ms-flex-item-align: start;
+          align-self: flex-start;
   border: 2px solid #ff9068;
   border-radius: 5px;
   font-family: 'Digital_7';
-  font-size: 2rem;
+  font-size: 5rem;
   width: 200px;
   height: 75px;
   color: lightgreen;

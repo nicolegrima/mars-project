@@ -1,3 +1,5 @@
+/* VARIABLES */
+
 var gulp = require('gulp'),
     browserSync = require('browser-sync');
 
@@ -13,15 +15,14 @@ var sass = require('gulp-sass'),
     autoprefixer = require('gulp-autoprefixer'),
     minifyCSS = require('gulp-cssnano');
 
+var historyAPIFallback = require('connect-history-api-fallback');
+
+/* TASKS */
 
     gulp.task('compile-react', function() {
-        return gulp.src('main.jsx')
+        return gulp.src('./src/main.jsx')
             .pipe(webpack({
-                entry: {
-                  main: './main.jsx'
-                },
                 output: {
-                  publicPath: '',
                   filename: 'main.js'
                 },
                 module: {
@@ -39,7 +40,7 @@ var sass = require('gulp-sass'),
 
 
 gulp.task('sass', function() {
-   gulp.src('./sass/style.scss')
+   gulp.src('./src/sass/style.scss')
       .pipe(sass())
       .pipe(autoprefixer({
          browsers: ['last 2 versions']}))
@@ -49,18 +50,24 @@ gulp.task('sass', function() {
       .pipe(gulp.dest('./build'));
 });
 
+gulp.task('copy-html', function(){
+  gulp.src('./src/index.html')
+    .pipe(gulp.dest('./build'));
+});
 
 gulp.task('browser-sync', function(){
 
     browserSync.init({
       server: {
-          baseDir:'./'
-      }
+      baseDir: './build',
+      middleware: [historyAPIFallback()]
+    }
 });
 
-gulp.watch('main.jsx', ['compile-react']);
-gulp.watch(['./build/main.js', 'index.html', './build/style.min.css']).on('change', browserSync.reload);
-gulp.watch('./sass/style.scss', ['sass']);
+gulp.watch('./src/main.jsx', ['compile-react']);
+gulp.watch(['./build/main.js', './build/index.html', './build/style.min.css']).on('change', browserSync.reload);
+gulp.watch('./src/sass/style.scss', ['sass']);
+gulp.watch('./src/index.html', ['copy-html']);
 });
 
-gulp.task('default', ['browser-sync']);
+gulp.task('default', ['copy-html','sass', 'compile-react','browser-sync']);

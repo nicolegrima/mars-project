@@ -24737,6 +24737,9 @@
 
 	var Welcome = React.createClass({
 	    displayName: 'Welcome',
+	    takeTest: function takeTest() {
+	        this.props.history.push('/mars-test');
+	    },
 
 
 	    render: function render() {
@@ -24748,13 +24751,12 @@
 	                { className: 'section-style' },
 	                React.createElement(
 	                    'button',
-	                    { className: 'test-button' },
+	                    { className: 'test-button', onClick: this.takeTest },
 	                    'Take Test'
 	                )
 	            )
 	        );
 	    }
-
 	});
 
 	module.exports = Welcome;

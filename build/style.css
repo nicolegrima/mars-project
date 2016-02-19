@@ -87,9 +87,9 @@ table {
   position: relative;
   margin: 0;
   padding: 0;
-  width: 100%;
+  /*width: 100%;*/
   width: 100vw;
-  height: 100%;
+  /*height: 100%;*/
   height: 100vh;
   font-size: 16px;
   font-weight: normal;
@@ -102,9 +102,9 @@ table {
   display: -ms-flexbox;
   display: flex;
   position: relative;
-  -webkit-flex: 0 1 20%;
-      -ms-flex: 0 1 20%;
-          flex: 0 1 20%;
+  -webkit-flex: 0 1 100%;
+      -ms-flex: 0 1 100%;
+          flex: 0 1 100%;
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
@@ -152,9 +152,9 @@ table {
   display: -ms-flexbox;
   display: flex;
   position: relative;
-  -webkit-flex: 0 1 80%;
-      -ms-flex: 0 1 80%;
-          flex: 0 1 80%;
+  -webkit-flex: 0 1 100%;
+      -ms-flex: 0 1 100%;
+          flex: 0 1 100%;
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;

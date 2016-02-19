@@ -24709,8 +24709,6 @@
 
 	'use strict';
 
-	var _reactRouter = __webpack_require__(1);
-
 	var React = __webpack_require__(24);
 
 	var Question = React.createClass({

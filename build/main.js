@@ -48,22 +48,34 @@
 
 	var _reactRouter = __webpack_require__(1);
 
-	var _question = __webpack_require__(215);
+	var _welcomeScreen = __webpack_require__(215);
 
-	var _question2 = _interopRequireDefault(_question);
+	var _welcomeScreen2 = _interopRequireDefault(_welcomeScreen);
 
-	var _welcome = __webpack_require__(216);
+	var _evaluationScreen = __webpack_require__(216);
 
-	var _welcome2 = _interopRequireDefault(_welcome);
+	var _evaluationScreen2 = _interopRequireDefault(_evaluationScreen);
 
-	var _ = __webpack_require__(217);
+	var _countdownTimer = __webpack_require__(217);
+
+	var _countdownTimer2 = _interopRequireDefault(_countdownTimer);
+
+	var _acceptedScreen = __webpack_require__(218);
+
+	var _acceptedScreen2 = _interopRequireDefault(_acceptedScreen);
+
+	var _rejectedScreen = __webpack_require__(219);
+
+	var _rejectedScreen2 = _interopRequireDefault(_rejectedScreen);
+
+	var _ = __webpack_require__(220);
 
 	var _2 = _interopRequireDefault(_);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var React = __webpack_require__(24);
-	var ReactDOM = __webpack_require__(218);
+	var ReactDOM = __webpack_require__(221);
 
 	// IMPORTS //
 
@@ -75,9 +87,12 @@
 	        return React.createElement(
 	            _reactRouter.Router,
 	            { history: _reactRouter.browserHistory },
-	            React.createElement(_reactRouter.Redirect, { from: '/', to: '/welcome' }),
-	            React.createElement(_reactRouter.Route, { path: '/welcome', component: _welcome2.default }),
-	            React.createElement(_reactRouter.Route, { path: '/mars-test', component: _question2.default }),
+	            React.createElement(_reactRouter.Redirect, { from: '/', to: '/welcome-screen' }),
+	            React.createElement(_reactRouter.Route, { path: '/welcome-screen', component: _welcomeScreen2.default }),
+	            React.createElement(_reactRouter.Route, { path: '/evaluation-screen', component: _evaluationScreen2.default }),
+	            React.createElement(_reactRouter.Route, { path: '/countdown-timer', component: _countdownTimer2.default }),
+	            React.createElement(_reactRouter.Route, { path: '/accepted-screen', component: _acceptedScreen2.default }),
+	            React.createElement(_reactRouter.Route, { path: '/rejected-screen', component: _rejectedScreen2.default }),
 	            React.createElement(_reactRouter.Route, { path: '*', component: _2.default })
 	        );
 	    }
@@ -24709,36 +24724,14 @@
 
 	'use strict';
 
-	var React = __webpack_require__(24);
-
-	var Question = React.createClass({
-	    displayName: 'Question',
-
-
-	    render: function render() {
-	        return React.createElement(
-	            'div',
-	            { className: 'wrapper' },
-	            React.createElement('div', { className: 'section-style' })
-	        );
-	    }
-
-	});
-
-	module.exports = Question;
-
-/***/ },
-/* 216 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
+	var _reactRouter = __webpack_require__(1);
 
 	var React = __webpack_require__(24);
 
 	var Welcome = React.createClass({
 	    displayName: 'Welcome',
 	    takeTest: function takeTest() {
-	        this.props.history.push('/mars-test');
+	        this.props.history.push('/evaluation-screen');
 	    },
 
 
@@ -24762,7 +24755,158 @@
 	module.exports = Welcome;
 
 /***/ },
+/* 216 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _reactRouter = __webpack_require__(1);
+
+	var React = __webpack_require__(24);
+
+	// import Questions from './components/questions-list.jsx';
+	// import CountdownTimer from './components/countdown-timer.jsx';
+
+	var MarsTest = React.createClass({
+	    displayName: 'MarsTest',
+
+
+	    getInitialState: function getInitialState() {
+	        return {
+	            // showQuestions: false,
+	            // showTimer: false,
+	            // hideButton: false
+	        };
+	    },
+
+	    initiateTest: function initiateTest() {
+	        this.setState({ hideButton: true });
+	    },
+
+	    render: function render() {
+	        return React.createElement(
+	            'div',
+	            { className: 'wrapper' },
+	            React.createElement(
+	                'div',
+	                { className: 'section-style' },
+	                React.createElement(
+	                    'button',
+	                    { className: 'evaluation-button', onClick: this.initateTest },
+	                    'Begin Evalution'
+	                )
+	            )
+	        );
+	    }
+	});
+
+	module.exports = MarsTest;
+
+	//{ this.state.hideButton ? {this.prop.hide} : <Button />}//
+
+/***/ },
 /* 217 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(24);
+
+	var CountdownTimer = React.createClass({
+	  displayName: 'CountdownTimer',
+
+
+	  getInitialState: function getInitialState() {
+	    return {
+	      secondsRemaining: 60
+	    };
+	  },
+
+	  resetTimer: function resetTimer() {
+	    clearInterval(this.interval);
+	    this.setState({ secondsRemaining: 60 });
+	    this.start();
+	  },
+
+	  tick: function tick() {
+	    this.setState({ secondsRemaining: this.state.secondsRemaining - 1 });
+	  },
+
+	  start: function start() {
+	    this.interval = setInterval(this.tick, 1000);
+	  },
+
+	  componentDidMount: function componentDidMount() {
+	    setTimeout(this.start, this.props.timeout);
+	  },
+
+	  render: function render() {
+	    return React.createElement(
+	      'p',
+	      { className: 'clock' },
+	      ' ',
+	      this.state.secondsRemaining,
+	      ' '
+	    );
+	  }
+	});
+
+	module.exports = CountdownTimer;
+
+	//<button onClick={this.resetTimer}>RESET</button>//
+
+/***/ },
+/* 218 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _reactRouter = __webpack_require__(1);
+
+	var React = __webpack_require__(24);
+
+	var Accepted = React.createClass({
+	    displayName: 'Accepted',
+
+
+	    render: function render() {
+	        return React.createElement(
+	            'div',
+	            null,
+	            'Accepted!!!'
+	        );
+	    }
+	});
+
+	module.exports = Accepted;
+
+/***/ },
+/* 219 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var _reactRouter = __webpack_require__(1);
+
+	var React = __webpack_require__(24);
+
+	var Rejected = React.createClass({
+	    displayName: 'Rejected',
+
+
+	    render: function render() {
+	        return React.createElement(
+	            'div',
+	            null,
+	            'Rejected!!!'
+	        );
+	    }
+	});
+
+	module.exports = Rejected;
+
+/***/ },
+/* 220 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -24785,7 +24929,7 @@
 	module.exports = NotFound;
 
 /***/ },
-/* 218 */
+/* 221 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';

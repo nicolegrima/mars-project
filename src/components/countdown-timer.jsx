@@ -30,8 +30,8 @@ var CountdownTimer = React.createClass({
 
   render: function() {
     return (
-    <p className='clock'> {this.state.secondsRemaining} </p>;
-    )
+    <p className='clock'> {this.state.secondsRemaining} </p>
+    );
   }
 });
 

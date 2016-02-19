@@ -8,8 +8,8 @@ import {Router, Route, browserHistory, Redirect} from 'react-router';
 import Welcome from './components/welcome-screen.jsx';
 import MarsTest from './components/evaluation-screen.jsx'
 import CountdownTimer from './components/countdown-timer.jsx';
-import Accepted from './components/accepted-screen';
-import Rejected from './components/rejetcted-screen';
+import Accepted from './components/accepted-screen.jsx';
+import Rejected from './components/rejected-screen.jsx';
 import NotFound from './components/404.jsx';
 
 var App = React.createClass ({

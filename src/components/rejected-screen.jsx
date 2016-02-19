@@ -1,5 +1,7 @@
 var React = require('react');
 
+import {browserHistory} from 'react-router';
+
 var Rejected = React.createClass ({
 
     render: function(){

@@ -3,13 +3,13 @@ var React = require('react');
 import {browserHistory} from 'react-router';
 
 // import Questions from './questions-list.jsx';
-// import CountdownTimer from './countdown-timer.jsx';
+import CountdownTimer from './countdown-timer.jsx';
 
 var MarsTest = React.createClass ({
 
   getInitialState: function() {
     return {
-      hideButton: false
+      hideButton: false,
     };
   },
 
@@ -27,6 +27,11 @@ var MarsTest = React.createClass ({
                       onClick={this.initiateTest}>
                       Begin Evalution
                     </button>
+
+                    <div className={(!this.state.hideButton ? ' hidden': '')}>
+                      <CountdownTimer />
+                    </div>
+
 
                 </div>
             </div>

@@ -24762,10 +24762,16 @@
 
 	var _reactRouter = __webpack_require__(1);
 
+	var _countdownTimer = __webpack_require__(217);
+
+	var _countdownTimer2 = _interopRequireDefault(_countdownTimer);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 	var React = __webpack_require__(24);
 
 	// import Questions from './questions-list.jsx';
-	// import CountdownTimer from './countdown-timer.jsx';
+
 
 	var MarsTest = React.createClass({
 	    displayName: 'MarsTest',
@@ -24793,6 +24799,11 @@
 	                    { className: 'evaluation-button ' + (this.state.hideButton ? ' hidden' : ''),
 	                        onClick: this.initiateTest },
 	                    'Begin Evalution'
+	                ),
+	                React.createElement(
+	                    'div',
+	                    { className: !this.state.hideButton ? ' hidden' : '' },
+	                    React.createElement(_countdownTimer2.default, null)
 	                )
 	            )
 	        );

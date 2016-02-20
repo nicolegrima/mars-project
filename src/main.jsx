@@ -6,7 +6,7 @@ import {Router, Route, browserHistory, Redirect} from 'react-router';
 // IMPORTS //
 
 import Welcome from './components/welcome-screen.jsx';
-import MarsTest from './components/evaluation-screen.jsx'
+import MarsTest from './components/evaluation-screen.jsx';
 import CountdownTimer from './components/countdown-timer.jsx';
 import Accepted from './components/accepted-screen.jsx';
 import Rejected from './components/rejected-screen.jsx';

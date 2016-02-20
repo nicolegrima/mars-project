@@ -37,4 +37,8 @@ var CountdownTimer = React.createClass({
 
 module.exports = CountdownTimer;
 
-//<button onClick={this.resetTimer}>RESET</button>//
+
+
+// if (this.state.secondsRemaining === 0) {
+//   clearInterval(this.interval)
+// }

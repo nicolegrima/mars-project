@@ -211,3 +211,6 @@ table {
   height: 75px;
   color: lightgreen;
   background-color: black; }
+
+.hidden {
+  display: none; }

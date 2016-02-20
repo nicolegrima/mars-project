@@ -24764,8 +24764,8 @@
 
 	var React = __webpack_require__(24);
 
-	// import Questions from './components/questions-list.jsx';
-	// import CountdownTimer from './components/countdown-timer.jsx';
+	// import Questions from './questions-list.jsx';
+	// import CountdownTimer from './countdown-timer.jsx';
 
 	var MarsTest = React.createClass({
 	    displayName: 'MarsTest',
@@ -24773,14 +24773,12 @@
 
 	    getInitialState: function getInitialState() {
 	        return {
-	            // showQuestions: false,
-	            // showTimer: false,
-	            // hideButton: false
+	            hideButton: false
 	        };
 	    },
 
 	    initiateTest: function initiateTest() {
-	        this.setState({ hideButton: true });
+	        this.setState({ hideButton: !false });
 	    },
 
 	    render: function render() {
@@ -24792,7 +24790,8 @@
 	                { className: 'section-style' },
 	                React.createElement(
 	                    'button',
-	                    { className: 'evaluation-button', onClick: this.initateTest },
+	                    { className: 'evaluation-button ' + (this.state.hideButton ? ' hidden' : ''),
+	                        onClick: this.initiateTest },
 	                    'Begin Evalution'
 	                )
 	            )
@@ -24801,8 +24800,6 @@
 	});
 
 	module.exports = MarsTest;
-
-	//{ this.state.hideButton ? {this.prop.hide} : <Button />}//
 
 /***/ },
 /* 217 */
@@ -24853,7 +24850,9 @@
 
 	module.exports = CountdownTimer;
 
-	//<button onClick={this.resetTimer}>RESET</button>//
+	// if (this.state.secondsRemaining === 0) {
+	//   clearInterval(this.interval)
+	// }
 
 /***/ },
 /* 218 */

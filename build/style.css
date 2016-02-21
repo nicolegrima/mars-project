@@ -200,10 +200,9 @@ table {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  position: relative;
-  -webkit-align-self: flex-start;
-      -ms-flex-item-align: start;
-          align-self: flex-start;
+  position: absolute;
+  top: 1rem;
+  right: 8rem;
   border: 2px solid #ff9068;
   border-radius: 5px;
   font-family: 'Digital_7';
@@ -211,7 +210,9 @@ table {
   width: 200px;
   height: 75px;
   color: lightgreen;
-  background-color: black; }
+  background-color: black;
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 0 13px limegreen; }
 
 .hidden {
   display: none; }

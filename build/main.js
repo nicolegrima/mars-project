@@ -24774,40 +24774,40 @@
 
 
 	var MarsTest = React.createClass({
-	    displayName: 'MarsTest',
+	  displayName: 'MarsTest',
 
 
-	    getInitialState: function getInitialState() {
-	        return {
-	            hideButton: false
-	        };
-	    },
+	  getInitialState: function getInitialState() {
+	    return {
+	      hideButton: false
+	    };
+	  },
 
-	    initiateTest: function initiateTest() {
-	        this.setState({ hideButton: !false });
-	    },
+	  initiateTest: function initiateTest() {
+	    this.setState({ hideButton: !false });
+	  },
 
-	    render: function render() {
-	        return React.createElement(
-	            'div',
-	            { className: 'wrapper' },
-	            React.createElement(
-	                'div',
-	                { className: 'section-style' },
-	                React.createElement(
-	                    'button',
-	                    { className: 'evaluation-button ' + (this.state.hideButton ? ' hidden' : ''),
-	                        onClick: this.initiateTest },
-	                    'Begin Evalution'
-	                ),
-	                React.createElement(
-	                    'div',
-	                    { className: !this.state.hideButton ? ' hidden' : '' },
-	                    React.createElement(_countdownTimer2.default, null)
-	                )
-	            )
-	        );
-	    }
+	  render: function render() {
+	    return React.createElement(
+	      'div',
+	      { className: 'wrapper' },
+	      React.createElement(
+	        'div',
+	        { className: 'section-style' },
+	        React.createElement(
+	          'button',
+	          { className: 'evaluation-button ' + (this.state.hideButton ? ' hidden' : ''),
+	            onClick: this.initiateTest },
+	          'Begin Evalution'
+	        ),
+	        React.createElement(
+	          'div',
+	          { className: !this.state.hideButton ? ' hidden' : '' },
+	          React.createElement(_countdownTimer2.default, null)
+	        )
+	      )
+	    );
+	  }
 	});
 
 	module.exports = MarsTest;
@@ -24852,7 +24852,7 @@
 	    return React.createElement(
 	      'p',
 	      { className: 'clock' },
-	      ' ',
+	      ' : ',
 	      this.state.secondsRemaining,
 	      ' '
 	    );

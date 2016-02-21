@@ -2,16 +2,50 @@ var React = require('react');
 
 var Questions = React.createClass ({
 
-questions: function() {
- return [
-   {question: "Mars is home to the tallest mountain in the solar system: True or False?", answer: "True"},
-   {question: "Mars has the largest dust storms in the solar system: True or False?", answer: "True"},
-   {question: "Mars and Earth have approximately the same landmass: True or False?", answer: "True"}
- ]
-},
+  getInitialState: function() {
+    return {
+      correctAnswers: 0
+    };
+  },
+
+    questionsTrio: function() {
+        return [
+          {
+            question: "Mars is home to the tallest mountain in the solar system: True or False?",
+            answer: "true"
+          },
+          {
+            question: "Mars has the largest dust storms in the solar system: True or False?",
+            answer: "true"
+          },
+          {
+            question: "Mars and Earth have approximately the same landmass: True or False?",
+            answer: "true"
+          }
+        ]
+    },
+
+    answerReceived: function() {
+      event.preventDefault();
+      var answer = this.refs.answer.value;
+    },
+
+    tallyCorrectAnswer: function() {
+      if (answer === "true") {
+      this.setState({correctAnswers: this.state.correctAnswers + 1});
+    } else {
+      this.setState({correctAnswers: this.state.correctAnswers});
+    }
+    },
+
     render: function(){
         return (
-          <div>{this.questions}</div>;
+          <form className="quesForm" onSubmit={this.answerReceived}>
+            <h2>{this.questionsTrio.question}</h2>
+            <input type="text" ref="answer" value="" required/>
+          </form>
         )
     }
 });
+
+module.exports = Questions;

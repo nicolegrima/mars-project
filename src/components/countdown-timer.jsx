@@ -2,43 +2,77 @@ var React = require('react');
 
 var CountdownTimer = React.createClass({
 
-  getInitialState: function() {
+  getInitialState: function(){
+    var startMinutes: 1;
+    var seconds = this.getSeconds();
+
     return {
-    secondsRemaining: 60
+    secondsRemaining: seconds,
     };
   },
 
-  resetTimer: function() {
+  getSeconds: function(){
+    if(this.props.startMinutes >= 1) {
+      return this.props.startMinutes * 60;
+    } else {
+      return 60;
+    }
+  },
+
+  secondsLeft: function(){
+    return Math.floor(this.state.secondsRemaining % 60);
+  },
+
+  minutesLeft: function(){
+    return Math.floor(this.state.secondsRemaining / 60);
+  },
+
+  resetTimer: function(){
         clearInterval(this.interval);
         this.setState({ secondsRemaining: 60});
         this.start();
   },
 
-  tick: function() {
+  tick: function(){
     this.setState(
     {secondsRemaining: this.state.secondsRemaining - 1}
     );
+    if(this.state.secondsRemaining <= 0) {
+      clearInterval(this.interval);
+      this.setState({seconds: 0});
+    }
   },
-
- start: function(){
-      this.interval = setInterval(this.tick, 1000);
-    },
 
   componentDidMount: function() {
-    setTimeout(this.start, this.props.timeout)
+    this.interval = setInterval(this.tick, 1000);
   },
 
-  render: function() {
+  componentWillReceiveProps: function(props) {
+    if(props.start === true) {
+      this.startTime();
+    }
+  },
+
+  componentWillUnmount: function() {
+    clearInterval(this.interval);
+  },
+
+  startTime: function(){
+       this.interval = setInterval(this.tick, 1000);
+     },
+
+  render: function(){
     return (
-    <p className='clock'> : {this.state.secondsRemaining} </p>
+      <div className='clock'>
+        {this.minutesLeft()} : {this.secondsLeft() < 10 ? "0" + this.secondsLeft() : this.secondsLeft()}
+      </div>
     );
   }
 });
 
-module.exports = CountdownTimer;
-
-
-
-// if (this.state.secondsRemaining === 0) {
-//   clearInterval(this.interval)
+// CountdownTimer.propTypes = {
+//   // startTime: React.PropTypes.number.isRequired,
+//   onTimeFinished: React.PropTypes.func.isRequired
 // }
+
+module.exports = CountdownTimer;

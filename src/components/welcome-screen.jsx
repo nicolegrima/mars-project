@@ -4,11 +4,11 @@ import {browserHistory} from 'react-router';
 
 var Welcome = React.createClass ({
 
-  takeTest() {
+  takeTest: function() {
       this.props.history.push('/evaluation-screen');
   },
 
-    render: function(){
+    render(){
         return (
 
           <div className='wrapper'>

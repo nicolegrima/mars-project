@@ -2,8 +2,25 @@ var React = require('react');
 
 import {browserHistory} from 'react-router';
 
-// import Questions from './questions-list.jsx';
+import QuestionsQuiz from './questions-screen.jsx';
 import CountdownTimer from './countdown-timer.jsx';
+
+
+var questionsList = [
+  {
+       question: 'Mars is home to the tallest mountain in the solar system: True or False?',
+       answer: true
+     },
+     {
+       question: 'Mars has the largest dust storms in the solar system: True or False?',
+       answer: true
+     },
+     {
+       question: 'Mars and Earth have approximately the same landmass: True or False?',
+       answer: true
+     }
+];
+
 
 var MarsTest = React.createClass ({
 
@@ -32,12 +49,10 @@ var MarsTest = React.createClass ({
                       <CountdownTimer />
                     </div>
 
-                  {/* hiding the below for now */}
-                  {/*
                     <div className={(!this.state.hideButton ? ' hidden': '')}>
-                      <Questions />
+                      <QuestionsQuiz />
                     </div>
-                    */}
+
 
                 </div>
             </div>

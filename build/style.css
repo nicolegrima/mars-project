@@ -80,6 +80,10 @@ table {
   box-sizing: border-box;
   outline: none; }
 
+.hidden {
+  display: none; }
+
+/* .wrapper is flex parent of aside-style and section-style*/
 .wrapper {
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -93,7 +97,6 @@ table {
   font-weight: normal;
   font-style: normal; }
 
-/* .wrapper is flex parent of aside-style and section-style*/
 /* flex child */
 .aside-style {
   display: -webkit-flex;
@@ -162,6 +165,71 @@ table {
           justify-content: center;
   background: linear-gradient(to bottom, #fd746c, #ff9068); }
 
+/* alternate for section-style */
+.accepted-style {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-flex: 0 1 100%;
+      -ms-flex: 0 1 100%;
+          flex: 0 1 100%;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background: linear-gradient(to bottom, #21b214, #8cd885); }
+
+/* alternate for section-style */
+.rejected-style {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-flex: 0 1 100%;
+      -ms-flex: 0 1 100%;
+          flex: 0 1 100%;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background: linear-gradient(to bottom, #7f0000, #e50000); }
+
+.pulse {
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+              -ms-grid-row-align: center;
+          align-items: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-family: 'Arial', sans-serif;
+  font-size: 6rem;
+  font-weight: bold;
+  color: #ffffff;
+  -webkit-animation: pulse 0.5s infinite;
+          animation: pulse 0.5s infinite; }
+
+@-webkit-keyframes pulse {
+  0% {
+    opacity: 0; }
+  50% {
+    opacity: 1; }
+  100% {
+    opacity: 0; } }
+
+@keyframes pulse {
+  0% {
+    opacity: 0; }
+  50% {
+    opacity: 1; }
+  100% {
+    opacity: 0; } }
+
 .test-button {
   background-color: #EDF1F2;
   border: 2px solid white;
@@ -179,6 +247,7 @@ table {
 .test-button:active {
   box-shadow: 0 12px 20px transparent; }
 
+.yesNoButton,
 .evaluation-button {
   background-color: #EDF1F2;
   border: 2px solid white;
@@ -190,11 +259,22 @@ table {
   padding: 1rem 4rem;
   box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3); }
 
+.yesNoButton:hover,
 .evaluation-button:hover {
   cursor: pointer; }
 
+.yesNoButon:active,
 .evaluation-button:active {
   box-shadow: 0 12px 20px transparent; }
+
+.yesNoButton {
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 1rem;
+  border: 2px solid white;
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+  text-transform: uppercase; }
 
 .clock {
   display: -webkit-flex;
@@ -213,9 +293,6 @@ table {
   background-color: black;
   box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
   text-shadow: 0 0 13px limegreen; }
-
-.hidden {
-  display: none; }
 
 .quesBox {
   display: -webkit-flex;
@@ -245,20 +322,3 @@ table {
   border-radius: 3px;
   padding: 1rem 4rem;
   line-height: 1.5rem; }
-
-.quesForm input {
-  width: 100%;
-  height: 2rem;
-  border: none;
-  border-bottom: 1px solid #222;
-  outline: none;
-  font-size: 1.5rem;
-  margin: 2rem 0; }
-
-.quesForm button {
-  -webkit-justify-content: right;
-      -ms-flex-pack: right;
-          justify-content: right;
-  border: 2px solid white;
-  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
-  text-transform: uppercase; }

@@ -6,7 +6,11 @@ var Accepted = React.createClass ({
 
     render: function(){
         return (
-          <div>Accepted!!!</div>
+          <div className='wrapper'>
+              <div className='accepted-style'>
+                  <h1 className='pulse'>Accepted!!!</h1>
+              </div>
+          </div>
         )
     }
 });

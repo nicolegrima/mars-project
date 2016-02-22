@@ -24933,12 +24933,12 @@
 	      ),
 	      React.createElement(
 	        'button',
-	        { onClick: this.handleTrue },
+	        { className: 'yesNoButton', onClick: this.handleTrue },
 	        'True'
 	      ),
 	      React.createElement(
 	        'button',
-	        { onClick: function onClick() {
+	        { className: 'yesNoButton', onClick: function onClick() {
 	            return _this.props.onAnswer(false);
 	          } },
 	        'False'
@@ -25062,8 +25062,16 @@
 	    render: function render() {
 	        return React.createElement(
 	            'div',
-	            null,
-	            'Accepted!!!'
+	            { className: 'wrapper' },
+	            React.createElement(
+	                'div',
+	                { className: 'accepted-style' },
+	                React.createElement(
+	                    'h1',
+	                    { className: 'pulse' },
+	                    'Accepted!!!'
+	                )
+	            )
 	        );
 	    }
 	});
@@ -25087,8 +25095,16 @@
 	    render: function render() {
 	        return React.createElement(
 	            'div',
-	            null,
-	            'Rejected!!!'
+	            { className: 'wrapper' },
+	            React.createElement(
+	                'div',
+	                { className: 'rejected-style' },
+	                React.createElement(
+	                    'h1',
+	                    { className: 'pulse' },
+	                    'Rejected!!!'
+	                )
+	            )
 	        );
 	    }
 	});

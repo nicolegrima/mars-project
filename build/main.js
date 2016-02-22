@@ -24925,7 +24925,7 @@
 
 	    return React.createElement(
 	      'div',
-	      null,
+	      { className: 'quesForm' },
 	      React.createElement(
 	        'p',
 	        null,

@@ -39,12 +39,6 @@ var QuestionsQuiz = React.createClass ({
                 currentQuestion={this.props.questions[this.state.questionIndex]}
                 onAnswer={this.handleUserAnswer}/>
 
-                      {/*<h2>This is where the Question will appear</h2>*/}
-
-                  {/*<form className="quesForm">
-                      <input type="text" ref="answer" value="" required/>
-                      <button>Submit Answer</button>
-                  </form>*/}
           </div>
           )
       }

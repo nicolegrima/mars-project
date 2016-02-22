@@ -8,7 +8,7 @@ var Question = React.createClass({
 
   render: function() {
      return (
-        <div>
+        <div className='quesForm'>
           <p>{this.props.currentQuestion.question}</p>
           <button className='yesNoButton' onClick={this.handleTrue}>True</button>
           <button className='yesNoButton' onClick={() => this.props.onAnswer(false)}>False</button>

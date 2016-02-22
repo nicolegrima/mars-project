@@ -20,8 +20,8 @@ var Question = React.createClass({
 
 Question.propTypes = {
 currentQuestion: React.PropTypes.shape({
-  question: React.PropTypes.string.isRequired,
-  answer: React.PropTypes.bool.isRequired
+    question: React.PropTypes.string.isRequired,
+    answer: React.PropTypes.bool.isRequired
 }).isRequired,
 onAnswer: React.PropTypes.func.isRequired
 };

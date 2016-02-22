@@ -30,6 +30,14 @@ var MarsTest = React.createClass ({
     };
   },
 
+  handleCorrect: function() {
+    this.props.history.push('/accepted-screen');
+  },
+
+  handleFailure: function() {
+    this.props.history.push('/rejected-screen');
+  },
+
   initiateTest: function() {
       this.setState({hideButton: !false});
   },
@@ -50,7 +58,7 @@ var MarsTest = React.createClass ({
                     </div>
 
                     <div className={(!this.state.hideButton ? ' hidden': '')}>
-                      <QuestionsQuiz />
+                      <QuestionsQuiz onCorrect={this.handleCorrect} questions={questionsList} onFailure={this.handleFailure}/>
                     </div>
 
 

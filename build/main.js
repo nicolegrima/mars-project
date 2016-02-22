@@ -56,26 +56,26 @@
 
 	var _evaluationScreen2 = _interopRequireDefault(_evaluationScreen);
 
-	var _countdownTimer = __webpack_require__(218);
+	var _countdownTimer = __webpack_require__(219);
 
 	var _countdownTimer2 = _interopRequireDefault(_countdownTimer);
 
-	var _acceptedScreen = __webpack_require__(219);
+	var _acceptedScreen = __webpack_require__(220);
 
 	var _acceptedScreen2 = _interopRequireDefault(_acceptedScreen);
 
-	var _rejectedScreen = __webpack_require__(220);
+	var _rejectedScreen = __webpack_require__(221);
 
 	var _rejectedScreen2 = _interopRequireDefault(_rejectedScreen);
 
-	var _ = __webpack_require__(221);
+	var _ = __webpack_require__(222);
 
 	var _2 = _interopRequireDefault(_);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var React = __webpack_require__(24);
-	var ReactDOM = __webpack_require__(222);
+	var ReactDOM = __webpack_require__(223);
 
 	// IMPORTS //
 
@@ -24767,7 +24767,7 @@
 
 	var _questionsScreen2 = _interopRequireDefault(_questionsScreen);
 
-	var _countdownTimer = __webpack_require__(218);
+	var _countdownTimer = __webpack_require__(219);
 
 	var _countdownTimer2 = _interopRequireDefault(_countdownTimer);
 
@@ -24796,6 +24796,14 @@
 	    };
 	  },
 
+	  handleCorrect: function handleCorrect() {
+	    this.props.history.push('/accepted-screen');
+	  },
+
+	  handleFailure: function handleFailure() {
+	    this.props.history.push('/rejected-screen');
+	  },
+
 	  initiateTest: function initiateTest() {
 	    this.setState({ hideButton: !false });
 	  },
@@ -24821,7 +24829,7 @@
 	        React.createElement(
 	          'div',
 	          { className: !this.state.hideButton ? ' hidden' : '' },
-	          React.createElement(_questionsScreen2.default, null)
+	          React.createElement(_questionsScreen2.default, { onCorrect: this.handleCorrect, questions: questionsList, onFailure: this.handleFailure })
 	        )
 	      )
 	    );
@@ -24834,107 +24842,124 @@
 /* 217 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
+
+	var _oneQuestion = __webpack_require__(218);
+
+	var _oneQuestion2 = _interopRequireDefault(_oneQuestion);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var React = __webpack_require__(24);
 
 	var QuestionsQuiz = React.createClass({
-	    displayName: "QuestionsQuiz",
+	  displayName: 'QuestionsQuiz',
 
 
-	    // getInitialState: function() {
-	    //   return {
-	    //     correctAnswers: 0
-	    //   };
-	    // },
+	  getInitialState: function getInitialState() {
+	    return {
+	      correctCount: 0,
+	      questionIndex: 0
+	    };
+	  },
 
-	    // const questionsList = [
-	    //   {
-	    //        question: 'Mars is home to the tallest mountain in the solar system: True or False?',
-	    //        answer: true,
-	    //      },
-	    //      {
-	    //        question: 'Mars has the largest dust storms in the solar system: True or False?',
-	    //        answer: true,
-	    //      },
-	    //      {
-	    //        question: 'Mars and Earth have approximately the same landmass: True or False?',
-	    //        answer: true,
-	    //      }
-	    // ]
+	  handleUserAnswer: function handleUserAnswer(userAnswer) {
+	    var correctAnswer = this.props.questions[this.state.questionIndex].answer;
+	    var currentCorrectCount = this.state.correctCount;
 
-	    render: function render() {
-	        return React.createElement(
-	            "div",
-	            { className: "quesBox" },
-	            React.createElement(
-	                "h2",
-	                null,
-	                "This is where the Question will appear"
-	            ),
-	            React.createElement(
-	                "form",
-	                { className: "quesForm" },
-	                React.createElement("input", { type: "text", ref: "answer", value: "", required: true }),
-	                React.createElement(
-	                    "button",
-	                    null,
-	                    "Submit Answer"
-	                )
-	            )
-	        );
+	    if (correctAnswer === userAnswer) {
+	      currentCorrectCount = currentCorrectCount + 1;
 	    }
+
+	    this.setState({
+	      correctCount: currentCorrectCount,
+	      questionIndex: this.state.questionIndex + 1
+	    });
+	  },
+	  componentWillUpdate: function componentWillUpdate(nextProps, nextState) {
+	    if (nextState.questionIndex === nextProps.questions.length) {
+	      this.state.correctCount === 2 ? this.props.onCorrect() : this.props.onFailure();
+	    }
+	  },
+
+
+	  render: function render() {
+	    return React.createElement(
+	      'div',
+	      { className: 'quesBox' },
+	      React.createElement(_oneQuestion2.default, {
+	        currentQuestion: this.props.questions[this.state.questionIndex],
+	        onAnswer: this.handleUserAnswer })
+	    );
+	  }
 	});
 
-	// Questions.propTypes = {
-	//   questions: React.PropTypes.arrayOf(React.propTypes.string.isRequired).isRequired
-	// }
+	QuestionsQuiz.propTypes = {
+	  questions: React.PropTypes.arrayOf(React.PropTypes.shape({
+	    question: React.PropTypes.string.isRequired,
+	    answer: React.PropTypes.bool.isRequired
+	  }).isRequired).isRequired
+
+	};
 
 	module.exports = QuestionsQuiz;
 
-	//
-	// questionsTrio: function() {
-	//     return [
-	//       {
-	//         question: "Mars is home to the tallest mountain in the solar system: True or False?",
-	//         answer: "true"
-	//       },
-	//       {
-	//         question: "Mars has the largest dust storms in the solar system: True or False?",
-	//         answer: "true"
-	//       },
-	//       {
-	//         question: "Mars and Earth have approximately the same landmass: True or False?",
-	//         answer: "true"
-	//       }
-	//     ]
-	// },
-
-	// answerReceived: function() {
-	//   event.preventDefault();
-	//   var answer = this.refs.answer.value;
-	// },
-
-	// tallyCorrectAnswer: function() {
-	//   if (answer === "true") {
-	//   this.setState({correctAnswers: this.state.correctAnswers + 1});
-	// } else {
-	//   this.setState({correctAnswers: this.state.correctAnswers});
-	// }
-	// },
-
-	//     render: function(){
-	//         return (
-	//           <form className="quesForm" onSubmit={this.answerReceived}>
-	//             {/*<h2>{this.questionsTrio.question}</h2>*/}
-	//             <input type="text" ref="answer" value="" required/>
-	//           </form>
-	//         )
-	//     }
-	// });
-
 /***/ },
 /* 218 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(24);
+
+	var Question = React.createClass({
+	  displayName: 'Question',
+
+
+	  handleTrue: function handleTrue() {
+	    this.props.onAnswer(true);
+	  },
+
+	  render: function render() {
+	    var _this = this;
+
+	    return React.createElement(
+	      'div',
+	      null,
+	      React.createElement(
+	        'p',
+	        null,
+	        this.props.currentQuestion.question
+	      ),
+	      React.createElement(
+	        'button',
+	        { onClick: this.handleTrue },
+	        'True'
+	      ),
+	      React.createElement(
+	        'button',
+	        { onClick: function onClick() {
+	            return _this.props.onAnswer(false);
+	          } },
+	        'False'
+	      )
+	    );
+	  }
+
+	});
+
+	Question.propTypes = {
+	  currentQuestion: React.PropTypes.shape({
+	    question: React.PropTypes.string.isRequired,
+	    answer: React.PropTypes.bool.isRequired
+	  }).isRequired,
+	  onAnswer: React.PropTypes.func.isRequired
+	};
+
+	module.exports = Question;
+
+/***/ },
+/* 219 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25021,7 +25046,7 @@
 	module.exports = CountdownTimer;
 
 /***/ },
-/* 219 */
+/* 220 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25046,7 +25071,7 @@
 	module.exports = Accepted;
 
 /***/ },
-/* 220 */
+/* 221 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25071,7 +25096,7 @@
 	module.exports = Rejected;
 
 /***/ },
-/* 221 */
+/* 222 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -25094,7 +25119,7 @@
 	module.exports = NotFound;
 
 /***/ },
-/* 222 */
+/* 223 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';

@@ -53,7 +53,7 @@ var MarsTest = React.createClass ({
                       Begin Evalution
                     </button>
 
-                    <div className={(!this.state.hideButton ? ' hidden': '')}>
+                    <div className={(!this.state.hideButton ? 'clock-container hide-clock hidden': 'clock-container')}>
                       <CountdownTimer />
                     </div>
 

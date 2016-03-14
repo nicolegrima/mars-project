@@ -9,6 +9,7 @@ var Accepted = React.createClass ({
           <div className='wrapper'>
               <div className='accepted-style'>
                   <h1 className='pulse'>Accepted!!!</h1>
+                  <h2 className="rocket-launch"><i className="fa fa-space-shuttle"></i></h2>
               </div>
           </div>
         )

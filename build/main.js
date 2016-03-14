@@ -24823,7 +24823,7 @@
 	        ),
 	        React.createElement(
 	          'div',
-	          { className: !this.state.hideButton ? ' hidden' : '' },
+	          { className: !this.state.hideButton ? 'clock-container hide-clock hidden' : 'clock-container' },
 	          React.createElement(_countdownTimer2.default, null)
 	        ),
 	        React.createElement(
@@ -25070,6 +25070,11 @@
 	                    'h1',
 	                    { className: 'pulse' },
 	                    'Accepted!!!'
+	                ),
+	                React.createElement(
+	                    'h2',
+	                    { className: 'rocket-launch' },
+	                    React.createElement('i', { className: 'fa fa-space-shuttle' })
 	                )
 	            )
 	        );

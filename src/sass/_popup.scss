@@ -1,0 +1,119 @@
+/**
+
+/ Pop Up Features
+
+**/
+
+/* CLOCK */
+
+.clock {
+  display: flex;
+  border: 2px solid #ff9068;
+  border-radius: 5px;
+  font-family: 'Digital_7';
+  font-size: 5rem;
+  width: 200px;
+  height: 75px;
+  color: lightgreen;
+  background-color: black;
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 0 13px limegreen;
+  justify-content: center;
+}
+
+.clock-container {
+    transition: right 0.5s ease-in-out;
+    position:absolute;
+    top:1rem;
+    right:8rem;
+}
+
+.clock-container.hide-clock.hidden {
+   right:-100px;
+}
+
+/* BUTTON */
+
+.test-button,
+.yesNoButton,
+.evaluation-button  {
+   background-color: #EDF1F2;
+   border: 2px solid white;
+   font-size: 1.2rem;
+   font-weight: bold;
+   text-transform: uppercase;
+   letter-spacing: -0.04rem;
+   border-radius: 3px;
+   padding: 1rem 4rem;
+   box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+
+   &:hover {
+     cursor: pointer;
+   }
+
+   &:active {
+     box-shadow: 0 12px 20px transparent;
+   }
+}
+
+.yesNoButton {
+  // justify-content: space-between;
+  // padding: 1rem;
+  // border: 2px solid white;
+  // box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+  // text-transform: uppercase;
+  // display: inline-block;
+}
+
+/* QUESTIONS */
+
+.quesBox {
+  display: flex;
+  width: 100%;
+  margin: 0 auto;
+  color: #969696;
+  background-color: #ffffff;
+  border: 2px solid white;
+  font-family: 'Arial', sans-serif;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 3px;
+  padding: 2rem;
+  line-height: 1.5rem;
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+}
+
+.quesForm {
+  // display: flex;
+  // flex-direction: row;
+  background-color: #ffffff;
+  color: #969696;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 3px;
+  padding: 1rem 4rem;
+  line-height: 1.5rem;
+
+
+  button {
+    margin: 1rem;
+  }
+}
+
+/* ROCKET LAUNCH */
+
+.rocket-launch {
+      color: #ffffff;
+      text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa;
+
+      i {
+        font-size: 20rem;
+        animation: move 5s steps(400);
+      }
+
+      @keyframes move {
+  from { top: 600px; }
+  to   { top: -600px; }
+}
+
+}

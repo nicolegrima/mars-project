@@ -25,6 +25,8 @@ var historyAPIFallback = require('connect-history-api-fallback');
                 output: {
                   filename: 'main.js'
                 },
+                debug: true,
+                devtool: 'inline-source-map',
                 module: {
                   loaders: [{ test: /\.jsx?$/,
                               exclude: /(node_modules)/,

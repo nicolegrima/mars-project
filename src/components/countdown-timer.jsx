@@ -43,12 +43,12 @@ var CountdownTimer = React.createClass({
     }
   },
 
-  componentDidMount: function() {
-    this.interval = setInterval(this.tick, 1000);
-  },
+  // componentDidMount: function() {
+  //   this.interval = setInterval(this.tick, 1000);
+  // },
 
   componentWillReceiveProps: function(props) {
-    if(props.start === true) {
+    if(props.startTimer === true) {
       this.startTime();
     }
   },

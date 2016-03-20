@@ -56,15 +56,6 @@
    }
 }
 
-.yesNoButton {
-  // justify-content: space-between;
-  // padding: 1rem;
-  // border: 2px solid white;
-  // box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
-  // text-transform: uppercase;
-  // display: inline-block;
-}
-
 /* QUESTIONS */
 
 .quesBox {
@@ -84,8 +75,6 @@
 }
 
 .quesForm {
-  // display: flex;
-  // flex-direction: row;
   background-color: #ffffff;
   color: #969696;
   font-size: 1.2rem;
@@ -112,8 +101,8 @@
       }
 
       @keyframes move {
-  from { top: 600px; }
-  to   { top: -600px; }
-}
+        from { top: 600px; }
+        to { top: -600px; }
+      }
 
 }

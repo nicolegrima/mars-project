@@ -43,10 +43,6 @@ var CountdownTimer = React.createClass({
     }
   },
 
-  // componentDidMount: function() {
-  //   this.interval = setInterval(this.tick, 1000);
-  // },
-
   componentWillReceiveProps: function(props) {
     if(props.startTimer === true) {
       this.startTime();
@@ -56,6 +52,14 @@ var CountdownTimer = React.createClass({
   componentWillUnmount: function() {
     clearInterval(this.interval);
   },
+
+// Trying to get 0:00 = push to Rejected Page - still a WIP
+ //  componentDidUpdate(prevProps, prevState) {
+ //   if(this.state.secondsRemaining === 0) {
+ //    //  this.props.onTimerFinished();
+ //    this.onTimerFinished();
+ //   }
+ // },
 
   startTime: function(){
        this.interval = setInterval(this.tick, 1000);
@@ -70,9 +74,5 @@ var CountdownTimer = React.createClass({
   }
 });
 
-// CountdownTimer.propTypes = {
-//   // startTime: React.PropTypes.number.isRequired,
-//   onTimeFinished: React.PropTypes.func.isRequired
-// }
 
 module.exports = CountdownTimer;

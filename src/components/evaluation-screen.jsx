@@ -34,6 +34,12 @@ var MarsTest = React.createClass ({
     this.props.history.push('/accepted-screen');
   },
 
+// Trying to get 0:00 = push to Rejected Page - still a WIP
+  // onTimerFinished: function() {
+  //   // this.props.history.push('/rejected-screen');
+  //   handleFailure();
+  // },
+
   handleFailure: function() {
     this.props.history.push('/rejected-screen');
   },
@@ -60,7 +66,6 @@ var MarsTest = React.createClass ({
                     <div className={(!this.state.hideButton ? ' hidden': '')}>
                       <QuestionsQuiz onCorrect={this.handleCorrect} questions={questionsList} onFailure={this.handleFailure}/>
                     </div>
-
 
                 </div>
             </div>

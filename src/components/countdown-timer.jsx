@@ -53,13 +53,13 @@ var CountdownTimer = React.createClass({
     clearInterval(this.interval);
   },
 
-// Trying to get 0:00 = push to Rejected Page - still a WIP
- //  componentDidUpdate(prevProps, prevState) {
- //   if(this.state.secondsRemaining === 0) {
- //    //  this.props.onTimerFinished();
- //    this.onTimerFinished();
- //   }
- // },
+
+  componentDidUpdate(prevProps, prevState) {
+   if(this.state.secondsRemaining === 0) {
+     clearInterval(this.interval);
+     this.props.onFailure();
+   }
+ },
 
   startTime: function(){
        this.interval = setInterval(this.tick, 1000);
